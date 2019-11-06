@@ -1,0 +1,9 @@
+<nav>
+    <img src="/assets/close.svg" alt="close" (click)="onClose()">
+    <a routerLink="" routerLinkActive="active">Home</a>
+    <a routerLink="about" routerLinkActive="active">About</a>
+    <a routerLink="add-recipe" routerLinkActive="active">Add Recipe</a>
+    <a routerLink="users" routerLinkActive="active" *ngIf="isLoggedIn">{{user.username}}</a>
+    <a routerLink="login" routerLinkActive="active" *ngIf="!isLoggedIn">Login</a>
+    <a routerLink="register" routerLinkActive="active" *ngIf="!isLoggedIn">Register</a>
+</nav>

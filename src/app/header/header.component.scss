@@ -1,0 +1,53 @@
+@import '../variables';
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  background-color: $primary-color;
+  box-shadow: 0 0 2rem 0.5rem lighten($text-color, 60%);
+
+  #menu {
+    padding: 0 1rem;
+    min-width: 4rem;
+    width: 4rem;
+  }
+
+  #menu:hover {
+    cursor: pointer;
+  }
+  
+  #search {
+    min-width: 20rem;
+    padding: 0 1rem;
+    flex-grow: 1;
+    height: 3rem;
+    border: none;
+    border-radius: 2rem;
+    background-color: lighten($text-color, 80%);
+  }
+
+  #search:hover {
+    border: solid 0.1rem $primary-color;
+  }
+
+  #search:focus {
+    border: solid 0.1rem $primary-color;
+    background-color: lighten($text-color, 90%);
+  }
+  
+  #user {
+    padding: 0 1rem;
+  }
+
+  a:hover {
+    color: lighten($text-color, 80%);
+  }
+
+  .active {
+    color: lighten($text-color, 80%);
+  }
+}

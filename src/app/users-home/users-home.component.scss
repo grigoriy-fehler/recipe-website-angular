@@ -1,0 +1,11 @@
+@import '../variables';
+@import '../form-error';
+@import '../forms';
+
+.container {
+  text-align: center;
+
+  h1, h2 {
+    margin: 0 0 2rem 0;
+  }
+}

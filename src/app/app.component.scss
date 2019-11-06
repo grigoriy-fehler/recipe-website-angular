@@ -1,0 +1,11 @@
+@import 'variables';
+
+div {
+  height: 99vh;
+  display: grid;
+  grid-template-rows: 5rem auto 2rem;
+}
+
+main {
+  margin: auto 0;
+}

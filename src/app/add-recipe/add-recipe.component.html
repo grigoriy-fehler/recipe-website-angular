@@ -1,0 +1,66 @@
+<div class="container">
+  <form [formGroup]="recipeForm" (ngSubmit)="onSubmit(recipeForm)">
+    <div *ngIf="error" class="error">{{error}}</div>
+    <h1>Add a new Recipe</h1>
+    <label id="name">
+      Recipe Name:
+      <input type="text" formControlName="name">
+    </label>
+    <label id="image">
+      Image:
+      <input type="file" formControlName="image" (change)="onFileChange($event)">
+    </label>
+    <label id="cooktime">
+      Cooktime:
+      <input type="number" formControlName="cooktime">
+    </label>
+    <label id="servings">
+      Servings:
+      <input type="number" formControlName="servings">
+    </label>
+    <label id="difficulty">
+      Difficulty:
+      <select formControlName="difficulty">
+        <optgroup label="Difficulty">
+          <option [ngValue]="1">1 - very easy</option>
+          <option [ngValue]="2">2 - easy</option>
+          <option [ngValue]="3">3 - normal</option>
+          <option [ngValue]="4">4 - hard</option>
+          <option [ngValue]="5">5 - very hard</option>
+        </optgroup>
+      </select>
+    </label>
+    <h2>Ingredients</h2>
+    <div formArrayName="ingredients" *ngFor="let ingredient of ingredients.controls; let i = index;" id="ingredients-container">
+      <div [formGroupName]="i" class="ingredients">
+        <label class="name">
+          Name:
+          <input type="text" formControlName="name">
+        </label>
+        <label class="amount">
+          Amount:
+          <input type="number" formControlName="amount">
+        </label>
+        <label class="type">
+          Type:
+          <select formControlName="type">
+            <optgroup label="Type">
+              <option value="gram">gram</option>
+              <option value="tl">tl</option>
+              <option value="el">el</option>
+            </optgroup>
+          </select>
+        </label>
+      </div>
+    </div>
+    <img src="/assets/plus.svg" alt="add icon" id="add-ingredient" (click)="addIngredient()">
+    <h2>Instructions</h2>
+    <div class="instructions" formArrayName="instructions" *ngFor="let instruction of instructions.controls; let i = index;">
+      <div [formGroupName]="i">
+        <textarea formControlName="text" rows="3" cols="20"></textarea>
+      </div>
+    </div>
+    <img src="/assets/plus.svg" alt="add icon" id="add-instruction" (click)="addInstruction()">
+    <button type="submit">Submit</button>
+  </form>
+</div>

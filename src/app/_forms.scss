@@ -1,0 +1,36 @@
+input, select, textarea, button {
+  box-sizing: border-box;
+  width: 100%;
+  height: 3rem;
+  margin: 0.6rem 0;
+  padding: 0.5rem 0.8rem;
+  border: solid 0.1rem lighten($text-color, 50%);
+  border-radius: 0.4rem;
+  background-color: lighten($text-color, 90%);
+  transition: 0.3s;
+}
+
+textarea {
+  height: 12rem;
+  resize: none;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: $text-color;
+  box-shadow: 0 0 0.2rem 0.3rem lighten($primary-color, 25%);
+}
+
+input:hover, select:hover, textarea:hover {
+  border-color: $text-color;
+}
+
+button:hover {
+  border-color: lighten($primary-color, 20%);
+  background-color: lighten($primary-color, 20%);
+}
+
+button:focus {
+  box-shadow: 0 0 0.2rem 0.3rem lighten($primary-color, 25%);
+  background-color: lighten($text-color, 90%);
+  border-color: $text-color;
+}

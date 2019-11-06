@@ -1,0 +1,23 @@
+@import '../variables';
+
+footer {
+  height: 2rem;
+  padding: 0.5rem 2rem;
+  background-color: $primary-color;
+  box-shadow: 0 0 0.2rem 0.1rem lighten($text-color, 60%);
+
+  a {
+    float: right;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    color: $text-color;
+    text-decoration: none;
+  }
+  a:hover {
+    color: lighten($text-color, 80%);
+  }
+  
+  .active {
+    color: lighten($text-color, 80%);
+  }
+}

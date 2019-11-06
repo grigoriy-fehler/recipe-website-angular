@@ -1,0 +1,39 @@
+@import '../variables';
+@import '../forms';
+
+p {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 15rem;
+  height: 3rem;
+  margin: 0.5rem 0rem 0rem 0rem;
+  padding: 0.5rem 0.8rem;
+  font-size: 1.4rem;
+  color: lighten($text-color, 30%);
+  border: solid 0.1rem lighten($text-color, 50%);
+  border-bottom: 0;
+  border-radius: 0.4rem 0.4rem 0 0;
+}
+
+#rating {
+  border-right: 0;
+  border-top-right-radius: 0;
+}
+
+#author {
+  border-left: 0;
+  border-top-left-radius: 0;
+}
+
+button {
+  display: inline-block;
+  min-width: 15rem;
+  width: 50%;
+  max-width: 25rem;
+}
+
+textarea {
+  max-width: 50rem;
+  margin-top: 0;
+  border-top-left-radius: 0;
+}

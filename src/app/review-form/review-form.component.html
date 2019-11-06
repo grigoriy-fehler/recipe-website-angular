@@ -1,0 +1,18 @@
+<div [ngSwitch]="isLoggedIn">
+  <form (ngSubmit)="onSubmit()" *ngSwitchCase="true">
+    <h2>Comments</h2>
+    <div *ngIf="error" class="error">{{error}}</div>
+    <select [(ngModel)]="newReview.rating" name="rating">
+      <optgroup label="Rating">
+        <option [ngValue]="1">1</option>
+        <option [ngValue]="2">2</option>
+        <option [ngValue]="3">3</option>
+        <option [ngValue]="4">4</option>
+        <option [ngValue]="5">5</option>
+      </optgroup>
+    </select>
+    <textarea [(ngModel)]="newReview.text" name="text" id="comment" cols="30" rows="10"></textarea>
+    <button type="submit">Submit</button>
+  </form>
+  <a routerLink="/login" *ngSwitchDefault>Login to add a review</a>
+</div>

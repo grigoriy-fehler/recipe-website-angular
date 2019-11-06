@@ -1,0 +1,9 @@
+<div *ngIf="reviews">
+  <div *ngFor="let review of reviews">
+    <p id="rating">rating: {{review.rating}}</p>
+    <p id="author">author: {{review.author}}</p>
+    <textarea [readonly]="!checkUser(review)" [(ngModel)]="review.text">{{review.text}}</textarea>
+    <button *ngIf="checkUser(review)" (click)="onUpdate(review, review._id)">Update</button>
+    <button *ngIf="checkUser(review)" (click)="onDelete(review._id)">Delete</button>
+  </div>
+</div>

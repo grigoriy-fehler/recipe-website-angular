@@ -1,0 +1,47 @@
+@import '../variables';
+
+#container {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, auto));
+  gap: 2rem;
+
+  .recipe {
+    width: 30rem;
+    height: 50rem;
+    border-radius: 2rem;
+    justify-self: center;
+    box-shadow: 0.1rem 0.2rem 1rem 0.1rem;
+    overflow: hidden;
+
+    img {
+      width: 30rem;
+    }
+
+    h2 {
+      text-align: center;
+      padding: 0.5rem 0;
+      font-size: 2rem;
+      border-bottom: solid 0.1rem lighten($text-color, 70%);
+    }
+
+    ul {
+      list-style: none;
+      height: 10rem;
+
+      li {
+        float: left;
+        margin: 0.5rem 0 0 0.5rem;
+        padding: 0.2rem 0.6rem;
+        font-size: 1.2rem;
+        border: solid 0.2rem darken($primary-color, 20%);
+        border-radius: 2rem;
+        color: $text-color;
+        background-color: lighten($primary-color, 30%);
+      }
+    }
+  }
+  ul:hover {
+    cursor: pointer;
+  }
+}

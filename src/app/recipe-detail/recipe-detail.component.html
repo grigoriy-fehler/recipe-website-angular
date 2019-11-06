@@ -1,0 +1,31 @@
+<div class="container" *ngIf="recipe">
+  <h1>{{recipe.name}}</h1>
+  <div id="picture-container">
+    <img src="assets/recipes/{{recipe.name}}" alt="Picture of recipe">
+  </div>
+  <div>
+    <p>Author: {{recipe.author}}</p>
+    <p>Rating: {{recipe.rating}}</p>
+  </div>
+  <div id="ingredients">
+    <h2>Ingredients</h2>
+    <ul>
+      <li *ngFor="let ingredient of recipe.ingredients">{{ingredient.name}} - {{ingredient.amount}} {{ingredient.type}}</li>
+    </ul>
+  </div>
+  <div id="instructions">
+    <h2>Instructions</h2>
+    <ol>
+      <li *ngFor="let instruction of recipe.instructions">{{instruction.text}}</li>
+    </ol>
+  </div>
+  <button *ngIf="isLoggedIn && user.username == recipe.author" (click)="onDelete()">Delete</button>
+  <app-review-form [recipeId]="recipe._id" class="comments"></app-review-form>
+  <app-review-list 
+    [reviews]="recipe.reviews" 
+    [user]="user" 
+    [isLoggedIn]="isLoggedIn" 
+    [recipeId]="recipe._id" 
+    class="comments">
+  </app-review-list>
+</div>
