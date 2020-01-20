@@ -1,6 +1,6 @@
 <header>
   <img src="/assets/menu.svg" alt="Menu" id="menu" (click)="sideNavChange()">
-  <input type="search" name="search" id="search">
+  <input #searchBox type="search" name="search" id="search" (input)="search(searchBox.value)">
   <div id="user">
     <a routerLink="users" id="current-user" *ngIf="isLoggedIn" routerLinkActive="active">{{user.username}}</a>
     <a routerLink="login" id="login" *ngIf="!isLoggedIn" routerLinkActive="active">Login</a>

@@ -1,6 +1,6 @@
 <div id="container">
   <div class="recipe" *ngFor="let recipe of recipes" (click)="onSelect(recipe)" routerLink="recipe/{{recipe._id}}">
-    <img src="assets/recipe/{{recipe.name}}.webp" alt="Bild von Recept">
+    <img src="{{recipe.image}}" alt="Picture of Recipe">
     <h2>{{recipe.name}}</h2>
     <ul>
       <li *ngFor="let ingredient of recipe.ingredients">{{ingredient.name}}</li>

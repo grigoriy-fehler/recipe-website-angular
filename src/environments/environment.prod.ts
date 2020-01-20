@@ -1,4 +1,4 @@
 export const environment = {
-  apiBaseUrl: '/api',
+  apiBaseUrl: 'https://murmuring-oasis-50948.herokuapp.com/api',
   production: true
 };

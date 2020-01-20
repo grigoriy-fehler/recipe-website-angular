@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  apiBaseUrl: 'http://localhost:3000/api',
+  apiBaseUrl: 'https://murmuring-oasis-50948.herokuapp.com/api',
   production: false
 };
 

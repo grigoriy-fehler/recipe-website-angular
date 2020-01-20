@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { AppDataService } from '../app-data.service';
 import { AuthenticationService } from '../authentication.service';
 
 import { User } from '../user';
 import { Review } from '../recipe';
+import { ReviewService } from '../review.service';
 
 @Component({
   selector: 'app-review-form',
@@ -24,7 +24,7 @@ export class ReviewFormComponent implements OnInit {
   public error: string;
 
   constructor(
-    private appDataService: AppDataService,
+    private reviewService: ReviewService,
     private authService: AuthenticationService
   ) { }
 
@@ -53,12 +53,7 @@ export class ReviewFormComponent implements OnInit {
     this.error = '';
     this.newReview.author = this.getUsername();
     if (this.formValidation()) {
-      this.appDataService.addReview(this.recipeId, this.newReview)
-        .then(review => {
-          this.initializeForm();
-          window.location.reload()
-        })
-        .catch(err => this.error = err)
+      this.reviewService.addReview(this.recipeId, this.newReview);
     } else {
       this.error = 'All fields are required';
     }

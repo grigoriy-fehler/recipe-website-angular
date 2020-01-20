@@ -1,11 +1,8 @@
 <div class="container" *ngIf="recipe">
   <h1>{{recipe.name}}</h1>
-  <div id="picture-container">
-    <img src="assets/recipes/{{recipe.name}}" alt="Picture of recipe">
-  </div>
+  <img src="{{recipe.image}}" alt="Picture of recipe">
   <div>
-    <p>Author: {{recipe.author}}</p>
-    <p>Rating: {{recipe.rating}}</p>
+    <p>Author: {{recipe.author}} &nbsp; Rating: {{recipe.rating}}</p>
   </div>
   <div id="ingredients">
     <h2>Ingredients</h2>

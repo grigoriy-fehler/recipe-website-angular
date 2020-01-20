@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 
 import { AppDataService } from '../app-data.service';
 import { Recipe } from '../recipe';
 import { User } from '../user';
 import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router';
+import { HistoryService } from '../history.service';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-add-recipe',
@@ -16,16 +19,15 @@ export class AddRecipeComponent implements OnInit {
   public recipeForm: FormGroup;
   public error: string;
 
-  private file: File;
   public instructions: FormArray;
   public ingredients: FormArray;
 
   private user: User;
 
   constructor(
-    private appDataService: AppDataService,
+    private recipeService: RecipeService,
+    private authService: AuthenticationService,
     private formBuilder: FormBuilder,
-    private authService: AuthenticationService
   ) { }
 
   ngOnInit() {
@@ -33,13 +35,12 @@ export class AddRecipeComponent implements OnInit {
     this.initializeForm();
     this.instructions = this.recipeForm.get('instructions') as FormArray;
     this.ingredients = this.recipeForm.get('ingredients') as FormArray;
-    console.log(this.recipeForm.controls['instructions'])
   }
 
   private initializeForm(): void {
     this.recipeForm = this.formBuilder.group({
       name: '',
-      image: '',
+      image: [null, Validators.required],
       cooktime: 20,
       difficulty: 3,
       servings: 4,
@@ -99,21 +100,17 @@ export class AddRecipeComponent implements OnInit {
   }
 
   public onSubmit(form: FormGroup): void {
-    if (this.formValidation(form.value) && this.user) {
-      this.appDataService.addRecipe(form.value, this.user.username)
-      .then(recipe => {
-        console.log(`Recipe saved: ${recipe}`);
-        this.initializeForm();
-      })
-      .catch(err => this.error = err);
-    } else if (!this.user) {
+    if (!this.user.email) {
       this.error = 'Login to add recipes';
+    } else if (this.formValidation(form.value)) {
+      form.value.author = this.user.username;
+      this.uploadForm(form.value);
     } else {
       this.error = 'All fields are required';
     }
   }
 
-  public onFileChange(event): void {
-    this.file = event.target.files[0];
+  private uploadForm(formData: FormData): void {
+    this.recipeService.addRecipe(formData);
   }
 }
