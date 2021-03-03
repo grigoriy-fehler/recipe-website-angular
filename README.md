@@ -2,6 +2,8 @@
 
 Eine einfache Website zum erstellen und suchen von Rezepten.
 
+[Zur Seite](https://www.recipe.g-f.dev/).
+
 Implementierte Funktionen:
 
 - Rezepte schreiben, anzeigen und löschen.
